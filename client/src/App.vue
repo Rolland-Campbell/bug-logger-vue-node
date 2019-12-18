@@ -1,45 +1,12 @@
 <template>
-  <div id="app" class="container-fluid">
-    <div class="row header">
-      <img src="./assets/bugloglogo.png" alt="logo" />
-      <button class="btn btn-dark" data-toggle="modal" data-target="#one">Report</button>
-      <Modal id="one">
-        <div slot="title">Report a bug</div>
-        <div slot="body">
-          <input type="text" placeholder="Name" v-model="name" />
-          <br />
-          <br />
-          <textarea placeholder="Enter comments" v-model="comment"></textarea>
-        </div>
-      </Modal>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link>|
+      <router-link to="/about">About</router-link>
     </div>
+    <router-view />
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import Modal from "../src/components/Modal";
-export default {
-  name: "home",
-  data() {
-    return {
-      title: "",
-      description: ""
-    };
-  },
-  methods: {
-    addBug() {
-      let bug = {
-        name: this.title,
-        name: this.name,
-        comment: this.description
-      };
-      this.$store.dispatch("addBug", bug);
-    }
-  },
-  components: { Modal }
-};
-</script>
 
 <style>
 #app {
@@ -61,11 +28,5 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
-
-.header {
-  justify-content: space-between;
-  padding: 10px;
-  background-color: maroon;
 }
 </style>

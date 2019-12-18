@@ -17,6 +17,9 @@ export default new Vuex.Store({
     bugs: []
   },
   mutations: {
+    setBugs(state, bug) {
+      state.bugs = bug
+    }
   },
   actions: {
     async getBugs({ commit }) {
