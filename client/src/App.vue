@@ -23,15 +23,16 @@ export default {
   name: "home",
   data() {
     return {
-      name: "",
-      comment: ""
+      title: "",
+      description: ""
     };
   },
   methods: {
     addBug() {
       let bug = {
+        name: this.title,
         name: this.name,
-        comment: this.comment
+        comment: this.description
       };
       this.$store.dispatch("addBug", bug);
     }
