@@ -14,11 +14,16 @@ let api = axios.create({
 
 export default new Vuex.Store({
   state: {
-    bugs: []
+    bugs: [],
+    currentBug: {}
   },
   mutations: {
     setBugs(state, bug) {
       state.bugs = bug
+    },
+
+    setCurrentBug(state, bug) {
+      state.currentBug = bug
     }
   },
   actions: {
@@ -48,6 +53,10 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    setCurrentBug({ commit }, data) {
+      commit('setCurrentBug', data)
+    }
   },
   modules: {
   }

@@ -1,5 +1,6 @@
 import express from "express";
 import bugsService from "../services/BugsService";
+import notesService from "../services/NotesService";
 
 export default class BugsController {
   constructor() {
@@ -8,6 +9,7 @@ export default class BugsController {
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will be run when this route is hit.
       .get("", this.getAll)
       .get("/:id", this.getById)
+      .get("/:id/notes", this.getBugNotes)
       .post("", this.create)
       .put("/:id", this.editById)
       .delete("/:id", this.deleteById);
@@ -28,6 +30,15 @@ export default class BugsController {
       return res.send(data)
     } catch (error) {
       next(error)
+    }
+  }
+
+  async getBugNotes(req, res, next) {
+    try {
+      let data = await notesService.getAll(req.params.id);
+      return res.send(data);
+    } catch (error) {
+      next(error);
     }
   }
 

@@ -1,10 +1,10 @@
 <template>
   <tbody>
-    <tr>
-      <th scope="row" @click="bugDetails">{{bugProps.closed}}</th>
+    <tr @click="bugDetails()">
+      <th scope="row">{{bugProps.closed}}</th>
       <td>{{bugProps.title}}</td>
       <td>{{bugProps.reportedBy}}</td>
-      <td>{{bugProps.closedDate}}</td>
+      <td>OPEN</td>
     </tr>
   </tbody>
 </template>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "table",
+  name: "tableComponent",
   mounted() {
     return this.$store.state.bugs;
   },
@@ -22,7 +22,8 @@ export default {
   computed: {},
   methods: {
     bugDetails() {
-      this.$route.push("/bugDetails");
+      this.$store.dispatch("setCurrentBug", this.bugProps);
+      this.$router.push({ path: `/details/${this.bugProps._id}` });
     }
   },
   components: {},

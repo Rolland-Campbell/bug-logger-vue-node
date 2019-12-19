@@ -34,7 +34,7 @@
               <th scope="col">Status</th>
             </tr>
           </thead>
-          <Table v-for="bug in bugs" :key="bug._id" :bugProps="bug" />
+          <TableComponent v-for="bug in bugs" :key="bug._id" :bugProps="bug" />
         </table>
       </div>
     </div>
@@ -44,7 +44,7 @@
 <script>
 // @ is an alias to /src
 import Modal from "../components/Modal";
-import Table from "../components/Table";
+import TableComponent from "../components/TableComponent";
 export default {
   name: "Home",
   mounted() {
@@ -77,7 +77,7 @@ export default {
       alert("Bug Reported");
     }
   },
-  components: { Modal, Table }
+  components: { Modal, TableComponent }
 };
 </script>
 
