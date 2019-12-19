@@ -5,6 +5,7 @@
       <td>{{bugProps.title}}</td>
       <td>{{bugProps.reportedBy}}</td>
       <td>OPEN</td>
+      <td>{{bugProps.createdAt}}</td>
     </tr>
   </tbody>
 </template>

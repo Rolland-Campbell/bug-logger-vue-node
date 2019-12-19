@@ -15,7 +15,8 @@ let api = axios.create({
 export default new Vuex.Store({
   state: {
     bugs: [],
-    currentBug: {}
+    currentBug: {},
+    notes: []
   },
   mutations: {
     setBugs(state, bug) {
@@ -24,6 +25,10 @@ export default new Vuex.Store({
 
     setCurrentBug(state, bug) {
       state.currentBug = bug
+    },
+
+    setNotes(state, notes) {
+      state.notes = notes
     }
   },
   actions: {
@@ -45,10 +50,28 @@ export default new Vuex.Store({
       }
     },
 
+    async getNotesByBugId({ commit }, id) {
+      try {
+        let res = await api.get('bugs/' + id + '/notes')
+        commit("setNotes", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async addBug({ dispatch }, bug) {
       try {
         await api.post('bugs', bug)
         dispatch("getBugs")
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async addNote({ dispatch }, note) {
+      try {
+        await api.post('notes', note)
+        dispatch("getNotesByBugId", note.bug)
       } catch (error) {
         console.error(error)
       }

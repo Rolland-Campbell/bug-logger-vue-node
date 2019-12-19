@@ -3,7 +3,7 @@
     <div class="row header">
       <img src="../assets/bugloglogo.png" alt="logo" />
       <button class="btn btn-dark" data-toggle="modal" data-target="#one">Report</button>
-      <Modal id="one">
+      <ModalComponent id="one">
         <div slot="title">Report a bug</div>
         <div slot="body">
           <input type="text" placeholder="Title" v-model="title" />
@@ -21,7 +21,7 @@
             data-dismiss="modal"
           >Save changes</button>
         </div>
-      </Modal>
+      </ModalComponent>
     </div>
     <div class="row">
       <div class="col-12">
@@ -32,6 +32,7 @@
               <th scope="col">Title</th>
               <th scope="col">Reported By</th>
               <th scope="col">Status</th>
+              <th scope="col">Created Date</th>
             </tr>
           </thead>
           <TableComponent v-for="bug in bugs" :key="bug._id" :bugProps="bug" />
@@ -43,7 +44,7 @@
 
 <script>
 // @ is an alias to /src
-import Modal from "../components/Modal";
+import ModalComponent from "../components/Modal";
 import TableComponent from "../components/TableComponent";
 export default {
   name: "Home",
@@ -77,7 +78,7 @@ export default {
       alert("Bug Reported");
     }
   },
-  components: { Modal, TableComponent }
+  components: { ModalComponent, TableComponent }
 };
 </script>
 
