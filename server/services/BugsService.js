@@ -13,7 +13,18 @@ class BugsService {
   }
 
   async create(data) {
-    await _repository.create(data)
+    return await _repository.create(data)
+  }
+
+  async editById(data, id) {
+    return await _repository.findOneAndUpdate({ _id: id }, data)
+  }
+
+  async deleteById(id) {
+    let data = await _repository.findByIdAndUpdate(id, { closed: true });
+    if (!data) {
+      throw new Error("Invalid Id");
+    }
   }
 }
 

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
 
+Vue.use(Vuex)
+
 let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
 
 let api = axios.create({
@@ -9,8 +11,6 @@ let api = axios.create({
   timeout: 3000,
   withCredentials: true
 })
-
-Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -31,9 +31,9 @@ export default new Vuex.Store({
       }
     },
 
-    async getBugById({ commit }, bugId) {
+    async getBugById({ commit }, id) {
       try {
-        let res = await api.get('bugs/' + bugId)
+        let res = await api.get('bugs/' + id)
         commit("setActiveBug", res.data)
       } catch (error) {
         console.error(error)

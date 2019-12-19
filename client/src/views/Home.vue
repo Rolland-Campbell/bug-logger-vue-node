@@ -24,7 +24,19 @@
       </Modal>
     </div>
     <div class="row">
-      <Table />
+      <div class="col-12">
+        <table class="table tableCss">
+          <thead>
+            <tr>
+              <th scope="col">Closed</th>
+              <th scope="col">Title</th>
+              <th scope="col">Reported By</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <Table v-for="bug in bugs" :key="bug._id" :bugProps="bug" />
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +46,10 @@
 import Modal from "../components/Modal";
 import Table from "../components/Table";
 export default {
+  name: "Home",
+  mounted() {
+    return this.$store.dispatch("getBugs");
+  },
   data() {
     return {
       reportedBy: "",
@@ -42,6 +58,11 @@ export default {
       title: "",
       closedDate: ""
     };
+  },
+  computed: {
+    bugs() {
+      return this.$store.state.bugs;
+    }
   },
   methods: {
     addBug() {
@@ -65,5 +86,12 @@ export default {
   justify-content: space-between;
   padding: 10px;
   background-color: maroon;
+}
+.tableCss {
+  margin-top: 9px;
+  border: 2px;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 40px;
 }
 </style>
