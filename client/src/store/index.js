@@ -79,6 +79,15 @@ export default new Vuex.Store({
 
     setCurrentBug({ commit }, data) {
       commit('setCurrentBug', data)
+    },
+
+    async deleteNote({ dispatch }, note) {
+      try {
+        await api.delete('/notes/' + note.id)
+        dispatch("getNotesByBugId", note.bugId)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   modules: {

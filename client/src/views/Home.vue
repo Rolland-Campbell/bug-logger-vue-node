@@ -75,7 +75,6 @@ export default {
         closed: this.closed
       };
       this.$store.dispatch("addBug", bug);
-      alert("Bug Reported");
     }
   },
   components: { ModalComponent, TableComponent }
@@ -85,7 +84,7 @@ export default {
 <style scoped>
 #home {
   background-color: rgb(248, 236, 221);
-  height: 100vh;
+  height: 100%;
   margin: auto;
 }
 
@@ -96,7 +95,7 @@ export default {
 }
 .tableInsert {
   overflow: scroll;
-  height: 80vh;
+  height: 88vh;
   margin: auto;
 }
 

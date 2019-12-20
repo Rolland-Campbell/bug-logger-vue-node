@@ -12,7 +12,7 @@ export default class BugsController {
       .get("/:id/notes", this.getBugNotes)
       .post("", this.create)
       .put("/:id", this.editById)
-      .delete("/:id", this.deleteById);
+      .delete("/:id", this.deleteById)
   }
 
   async getAll(req, res, next) {
@@ -68,4 +68,5 @@ export default class BugsController {
       next(error)
     }
   }
+
 }

@@ -2,6 +2,7 @@
   <div id="home" class="container-fluid">
     <div class="row header">
       <img src="../assets/bugloglogo.png" alt="logo" />
+      <button class="btn btn-warning" data-toggle="modal" data-target="#note">Close Bug</button>
       <button class="btn btn-dark" data-toggle="modal" data-target="#note">Add Note</button>
     </div>
     <ModalComponent id="note">
@@ -22,7 +23,7 @@
       </div>
     </ModalComponent>
     <div class="row justify-content-center mt-3">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <div class="card cardSize">
           <img class="card-img-top" src="../assets/bugPic.png" alt />
           <div class="card-body">
@@ -32,6 +33,7 @@
               <br />
               Created Date: {{bugDetails.createdAt.split('T')[0]}}
               <br />Status: OPEN
+              <br />
             </div>
             <div class="descText">
               <u>Description:</u>
@@ -40,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <div class="row notesHeader">
           <h2 class="notesStyle">Notes:</h2>
         </div>
@@ -83,7 +85,6 @@ export default {
         bug: this.$route.params.id
       };
       this.$store.dispatch("addNote", note);
-      alert("Note Added");
     }
   },
   components: { ModalComponent, NotesComponent }
@@ -93,13 +94,13 @@ export default {
 
 <style scoped>
 #home {
-  height: 100%;
+  height: 94vh;
   margin: auto;
   background-color: rgb(248, 236, 221);
 }
 
 .cardSize {
-  height: 95%;
+  height: 80vh;
   margin: auto;
 }
 
@@ -112,12 +113,9 @@ export default {
 .descText {
   margin-top: 5px;
   padding: 3px;
-  border: 1px;
-  border-color: gray;
-  border-style: solid;
   text-align: left;
-  height: 70%;
   overflow: scroll;
+  height: 15vh;
 }
 
 .card-img-top {
@@ -132,7 +130,7 @@ export default {
   padding-top: 3px;
 }
 .notesCol {
-  height: 90%;
-  overflow: scroll;
+  height: 74vh;
+  overflow-y: scroll;
 }
 </style>
