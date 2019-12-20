@@ -23,7 +23,7 @@
     </ModalComponent>
     <div class="row justify-content-center mt-3">
       <div class="col-6">
-        <div class="card">
+        <div class="card cardSize">
           <img class="card-img-top" src="../assets/bugPic.png" alt />
           <div class="card-body">
             <h4 class="card-title">Report Title: {{bugDetails.title}}</h4>
@@ -41,10 +41,12 @@
         </div>
       </div>
       <div class="col-6">
-        <div>
+        <div class="row notesHeader">
           <h2 class="notesStyle">Notes:</h2>
         </div>
-        <NotesComponent v-for="note in notes" :key="note._id" :notesProp="note" />
+        <div class="col-12 notesCol">
+          <NotesComponent v-for="note in notes" :key="note._id" :notesProp="note" />
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +92,16 @@ export default {
 
 
 <style scoped>
+#home {
+  height: 100%;
+  margin: auto;
+}
+
+.cardSize {
+  height: 95%;
+  margin: auto;
+}
+
 .header {
   justify-content: space-between;
   padding: 10px;
@@ -103,6 +115,8 @@ export default {
   border-color: gray;
   border-style: solid;
   text-align: left;
+  height: 70%;
+  overflow: scroll;
 }
 
 .card-img-top {
@@ -110,8 +124,14 @@ export default {
   width: cover;
 }
 
-.notesStyle {
+.notesHeader {
   background-color: maroon;
   color: white;
+  justify-content: center;
+  padding-top: 3px;
+}
+.notesCol {
+  height: 90%;
+  overflow: scroll;
 }
 </style>

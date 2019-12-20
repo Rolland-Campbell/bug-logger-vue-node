@@ -2,8 +2,8 @@
   <tbody>
     <tr @click="bugDetails()">
       <th scope="row">
-        <i class="fa fa-bug" v-if="bugProps.closed == false"></i>
-        <i class="fas fa-thumbs-up" v-else="bugProps.closed == true"></i>
+        <i class="fa fa-bug colorIconBad" v-if="bugProps.closed == false"></i>
+        <i class="fa fa-thumbs-up colorIconGood" v-else="bugProps.closed == true"></i>
       </th>
       <td>{{bugProps.title}}</td>
       <td>{{bugProps.reportedBy}}</td>
@@ -39,4 +39,11 @@ export default {
 
 
 <style scoped>
+.colorIconGood {
+  color: green;
+}
+
+.colorIconBad {
+  color: red;
+}
 </style>
