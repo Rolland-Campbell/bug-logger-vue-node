@@ -23,7 +23,7 @@
         </div>
       </ModalComponent>
     </div>
-    <div class="row">
+    <div class="row tableInsert">
       <div class="col-12">
         <table class="table tableCss">
           <thead>
@@ -83,11 +83,23 @@ export default {
 </script>
 
 <style scoped>
+#home {
+  background-color: rgb(248, 236, 221);
+  height: 100vh;
+  margin: auto;
+}
+
 .header {
   justify-content: space-between;
   padding: 10px;
   background-color: maroon;
 }
+.tableInsert {
+  overflow: scroll;
+  height: 80vh;
+  margin: auto;
+}
+
 .tableCss {
   margin-top: 9px;
   border: 2px;

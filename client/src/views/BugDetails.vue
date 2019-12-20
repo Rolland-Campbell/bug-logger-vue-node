@@ -95,6 +95,7 @@ export default {
 #home {
   height: 100%;
   margin: auto;
+  background-color: rgb(248, 236, 221);
 }
 
 .cardSize {

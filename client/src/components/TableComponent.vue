@@ -39,6 +39,12 @@ export default {
 
 
 <style scoped>
+tbody {
+  height: 100%;
+  margin: auto;
+  background-color: white;
+}
+
 .colorIconGood {
   color: green;
 }
