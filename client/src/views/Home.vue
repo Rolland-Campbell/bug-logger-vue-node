@@ -28,7 +28,7 @@
         <table class="table tableCss">
           <thead>
             <tr>
-              <th scope="col">Closed</th>
+              <th scope="col"></th>
               <th scope="col">Title</th>
               <th scope="col">Reported By</th>
               <th scope="col">Status</th>
