@@ -30,7 +30,7 @@
             <div class="card-text">
               Reported By: {{bugDetails.reportedBy}}
               <br />
-              Created Date: {{bugDetails.createdAt}}
+              Created Date: {{bugDetails.createdAt.split('T')[0]}}
               <br />Status: OPEN
             </div>
             <div class="descText">
@@ -41,13 +41,10 @@
         </div>
       </div>
       <div class="col-6">
-        <h2 class="notesStyle">Notes:</h2>
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-          </div>
+        <div>
+          <h2 class="notesStyle">Notes:</h2>
         </div>
+        <NotesComponent v-for="note in notes" :key="note._id" :notesProp="note" />
       </div>
     </div>
   </div>
@@ -56,8 +53,12 @@
 
 <script>
 import ModalComponent from "../components/Modal";
+import NotesComponent from "../components/NoteComponent";
 export default {
   name: "bugDetails",
+  mounted() {
+    this.$store.dispatch("getNotesByBugId", this.$route.params.id);
+  },
   data() {
     return {
       reportedBy: "",
@@ -67,6 +68,9 @@ export default {
   computed: {
     bugDetails() {
       return this.$store.state.currentBug;
+    },
+    notes() {
+      return this.$store.state.notes;
     }
   },
   methods: {
@@ -80,7 +84,7 @@ export default {
       alert("Note Added");
     }
   },
-  components: { ModalComponent }
+  components: { ModalComponent, NotesComponent }
 };
 </script>
 
@@ -103,7 +107,7 @@ export default {
 
 .card-img-top {
   height: 400px;
-  width: 400px;
+  width: cover;
 }
 
 .notesStyle {
